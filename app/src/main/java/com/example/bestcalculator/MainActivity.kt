@@ -72,21 +72,23 @@ class MainActivity : AppCompatActivity() {
             isResultDisplayed = false
     }
     private fun appendToInputt(text: String) {
+        val currentText = tVInputNO.text.toString()
+
         if (isResultDisplayed) {
+            // Reset the input and display the new text
             tVInputNO.text = text
             isResultDisplayed = false
         } else {
-            val currentText = tVInputNO.text.toString()
-
-            // Check if the "Delete" button was clicked
+            // Check if the "Delete" button was clicked and there is something to delete
             if (text == "Del" && currentText.isNotEmpty()) {
                 // Remove the last character from the input text
                 tVInputNO.text = currentText.substring(0, currentText.length - 1)
-            } else {
+            } else if (text != "Del") {
                 // Append the new text to the existing input
                 tVInputNO.text = "$currentText$text"
             }
         }
     }
+
 
 }
